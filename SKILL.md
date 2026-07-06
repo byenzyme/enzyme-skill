@@ -9,7 +9,7 @@ description: >
 license: MIT
 compatibility: Requires shell access (macOS arm64/x86_64, Linux x86_64/arm64). Install the enzyme CLI if it is not on PATH.
 allowed-tools: Bash Read Glob Grep
-metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENROUTER_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/jshph/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.6.1", "homepage": "https://enzyme.garden" }
+metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENROUTER_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/jshph/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.6.2", "homepage": "https://enzyme.garden" }
 ---
 
 # Enzyme
@@ -192,6 +192,7 @@ Use catalyst phrases as vocabulary for `enzyme catalyze` searches. They connect 
 - `enzyme refresh --quiet` re-indexes changed content.
 - Use exact search for names, source titles, distinctive phrases, `#tags`, `[[wikilinks]]`, and literal text.
 - For annotated reference/import vaults, if the user names a title or phrase, find that obvious note first with exact search, then use petri/catalyze to connect it to adjacent material.
+- `enzyme catalyze "query" --target ./target-dir` prepares external content using vault catalysts, then searches it.
 - Tags can appear as `- tag` in frontmatter or `#tag` inline; search without `#` when you need both.
 
 ### External References
