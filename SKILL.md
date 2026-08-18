@@ -9,7 +9,7 @@ description: >
 license: MIT
 compatibility: Requires shell access (macOS arm64/x86_64, Linux x86_64/arm64). Install the enzyme CLI if it is not on PATH.
 allowed-tools: Bash Read Glob Grep
-metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENROUTER_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/useenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.8.0", "homepage": "https://memory.enzyme.garden" }
+metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENROUTER_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/useenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.8.1", "homepage": "https://memory.enzyme.garden" }
 ---
 
 # Enzyme
@@ -113,6 +113,8 @@ It returns once seed petri context exists; semantic search becomes available aft
 ## Session Lifecycle
 
 Explain setup/refresh simply when useful: init is the slow compile step that turns the vault into source-grounded questions; refresh is how new notes join that compiled map; normal retrieval is fast because the agent uses those precomputed handles instead of starting from scratch.
+
+`enzyme refresh --quiet` JSON includes an `update` object with a two-state contract. Check `update.status`: `ok` means nothing to do (a `note` may explain a slower call such as vault regeneration); `action_required` means perform or relay the `action` string to the user — never interpret any other keys. Use `enzyme status` when you need full binary-update diagnostics.
 
 Claude/Codex plugin installation does not install Petri or refresh hooks by default. Do not create `.claude/hooks/enzyme-petri.sh`, mutate `.claude/settings.json`, or rely on automatic prompt injection during normal setup. Use `enzyme petri` and `enzyme catalyze` explicitly when context is needed.
 
