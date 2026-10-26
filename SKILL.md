@@ -6,10 +6,10 @@ description: >
   concept rather than keyword, runtime note-writing, and refresh. If the
   workspace is not initialized, follow the first-time setup section before
   normal retrieval.
-license: MIT
+license: Apache-2.0
 compatibility: Requires shell access (macOS arm64/x86_64, Linux x86_64/arm64). Install the enzyme CLI if it is not on PATH.
 allowed-tools: Bash Read Glob Grep
-metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENAI_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/byenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.13.1", "homepage": "https://memory.enzyme.garden" }
+metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENAI_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/byenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.13.2", "homepage": "https://memory.enzyme.garden" }
 ---
 
 # Enzyme
