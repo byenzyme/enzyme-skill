@@ -9,7 +9,7 @@ description: >
 license: Apache-2.0
 compatibility: Requires shell access (macOS arm64/x86_64, Linux x86_64/arm64). Install the enzyme CLI if it is not on PATH.
 allowed-tools: Bash Read Glob Grep
-metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENAI_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/byenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.13.2", "homepage": "https://memory.enzyme.garden" }
+metadata: { "openclaw": { "always": true, "os": ["darwin", "linux"], "primaryEnv": "OPENAI_API_KEY", "requires": { "anyBins": ["enzyme"] }, "install": [{ "id": "curl", "kind": "download", "url": "https://raw.githubusercontent.com/byenzyme/enzyme/main/install.sh", "bins": ["enzyme"], "label": "Install enzyme (curl)" }] }, "author": "jshph", "version": "0.13.3", "homepage": "https://memory.enzyme.garden" }
 ---
 
 # Enzyme
@@ -66,7 +66,7 @@ bundled `references/knowledge-practice-review.md` before issuing setup commands.
 
 Explain setup/refresh simply when useful: init is the slow compile step that indexes the vault and writes its source-grounded questions; refresh is how new notes join the index and the map; normal retrieval is fast because search runs locally on the index without rereading the vault.
 
-`enzyme refresh --quiet` JSON includes an `update` object with a two-state contract. Check `update.status`: `ok` means nothing to do (a `note` may explain a slower call such as vault regeneration); `action_required` means perform or relay the `action` string to the user — never interpret any other keys. Use `enzyme status` when you need full binary-update diagnostics.
+`enzyme refresh --quiet` JSON includes an `update` object with a two-state contract. Check `update.status`: `ok` means nothing to do, except that a present `note` (an upgrade rebuilt the index, or questions are being regenerated) should be relayed to the user in one sentence; `action_required` means perform or relay the `action` string to the user — never interpret any other keys. Use `enzyme status` when you need full binary-update diagnostics.
 
 Claude/Codex plugin installation does not install Petri or refresh hooks by default. Do not create `.claude/hooks/enzyme-petri.sh`, mutate `.claude/settings.json`, or rely on automatic prompt injection during normal setup. Use `enzyme petri` and `enzyme catalyze` explicitly when context is needed.
 
@@ -148,7 +148,7 @@ defaults. Report malformed configuration rather than silently ignoring it.
 - For a broad prompt or first orientation, run `enzyme petri`.
 - Treat nested children under a tag or folder as evidence inside that parent cluster by default.
 
-Use petri to orient: which parts of the vault bear on the request, and what the user calls them. When a turn allows only a search or two, carry one or two catalyst phrases into the query; they reach notes the user's raw words may not. With more searches, the user's own wording works as well. Catalysts are generated, not written by the user: never quote one as the user's words or treat it as evidence. Answer from the passages you retrieve.
+Use petri to orient: which parts of the vault bear on the request, and what the user calls them. Those tag, folder, and people names are the user's own vocabulary and make good search terms. When a turn allows only a search or two, carry one or two catalyst phrases into the query; they reach notes the user's raw words may not. With more searches, the user's own wording works as well. Catalysts are generated, not written by the user: never quote one as the user's words or treat it as evidence. Answer from the passages you retrieve.
 
 ## Search
 
